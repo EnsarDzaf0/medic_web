@@ -6,12 +6,15 @@ import UserDetailsModal from '../../components/user_details/UserDetailsModal';
 import { SingleUserResponse } from '../../types/user';
 import { Box, Button, Typography } from '@mui/material';
 import AddUserModal from '../../components/add_user/AddUserModal';
+import { clearCookies } from '../../services/services';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
     const [users, setUsers] = useState<AllUsersResponse[]>([]);
     const [selectedUser, setSelectedUser] = useState<SingleUserResponse | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [addUserModalOpen, setAddUserModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getUsers = async () => {
@@ -75,7 +78,8 @@ export default function HomePage() {
     const handleLogout = async () => {
         try {
             await logout();
-            window.location.href = '/login';
+            clearCookies();
+            navigate('/login');
         } catch (error) {
             console.error(error);
         }
