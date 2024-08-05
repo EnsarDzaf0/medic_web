@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import Cookies from "js-cookie";
 
 //export const baseUrl = 'http://localhost:8080/api';
-export const baseUrl = 'http://159.89.17.33/api'
+export const baseUrl = 'https://medic-lab-api.online/api'
 
 export const loginRoute = '/login';
 export const getAllUsersRoute = '/users';
